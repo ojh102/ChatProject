@@ -7,11 +7,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by OhJaeHwan on 2016-09-23.
  */
 
-public class RetrofitManager {
+public class NetworkManager {
     private static final String SERVER = "http://ec2-52-78-125-221.ap-northeast-2.compute.amazonaws.com";
     Retrofit client;
 
-    private RetrofitManager() {
+    private NetworkManager() {
         //Retrofit Enviroment setting.
 
         client = new Retrofit.Builder()
@@ -22,10 +22,10 @@ public class RetrofitManager {
 
     // singleton holder pattern : thread safe, lazy class initialization, memory saving.
     public static class InstanceHolder {
-        public static final RetrofitManager INSTANCE = new RetrofitManager();
+        public static final NetworkManager INSTANCE = new NetworkManager();
     }
 
-    public static RetrofitManager getInstance() {
+    public static NetworkManager getInstance() {
         return InstanceHolder.INSTANCE;
     }
 
