@@ -1,13 +1,15 @@
-package ojh102.github.com.chatproject;
+package com.github.ojh102.chatproject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SpalshActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spalsh);
+        setContentView(R.layout.activity_main);
     }
+
+
 }
