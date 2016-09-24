@@ -48,7 +48,10 @@ public interface ChatApi {
     Call<List<Friend>> getFriendList(@Query("id") String id);
 
     @GET("friend/search")
-    Call<List<Friend>> getSearchList(@Query("id") String friendId);
+    Call<List<Friend>> getSearchList(
+            @Query("myId") String myId,
+            @Query("friendId") String friendId
+    );
 
     @FormUrlEncoded
     @POST("friend/add")

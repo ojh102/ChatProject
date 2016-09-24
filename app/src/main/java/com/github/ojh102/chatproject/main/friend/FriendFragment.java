@@ -66,7 +66,8 @@ public class FriendFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Friend>> call, Response<List<Friend>> response) {
                 if(response.isSuccessful()) {
-                    mFriendAdapter.add(response.body());
+                    if(response.body()!=null)
+                        mFriendAdapter.add(response.body());
                 } else {
                     Toast.makeText(getContext(), "network fail", Toast.LENGTH_SHORT).show();
                 }

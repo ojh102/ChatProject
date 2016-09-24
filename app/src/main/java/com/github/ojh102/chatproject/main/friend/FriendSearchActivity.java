@@ -97,7 +97,7 @@ public class FriendSearchActivity extends AppCompatActivity {
 
     private void getSearchFriends(String query) {
         ChatApi chatApi = NetworkManager.getInstance().getApi(ChatApi.class);
-        Call<List<Friend>> call = chatApi.getSearchList(query);
+        Call<List<Friend>> call = chatApi.getSearchList(PropertyManager.getInstance().getId(), query);
         call.enqueue(new Callback<List<Friend>>() {
             @Override
             public void onResponse(Call<List<Friend>> call, Response<List<Friend>> response) {
