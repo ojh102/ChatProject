@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.ojh102.chatproject.R;
+import com.github.ojh102.chatproject.data.Friend;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,27 +28,11 @@ public class FriendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ((FriendViewHolder)holder).setFriend(items.get(position));
-        ((FriendViewHolder)holder).itemView.requestFocus(View.FOCUS_DOWN);
         ((FriendViewHolder)holder).setOnClickFrinedListener(new FriendViewHolder.OnClickFrinedListener() {
             @Override
             public void onCLickFriendView(int position) {
                 if(mListener != null) {
                     mListener.onClickFriendView(items.get(position));
-                }
-
-            }
-
-            @Override
-            public void onCLickFriendId(int position) {
-                if(mListener != null) {
-                    mListener.onClickFriendId(items.get(position));
-                }
-            }
-
-            @Override
-            public void onCLickFriendTumbnail(int position) {
-                if(mListener != null) {
-                    mListener.onClickFriendTumbnail(items.get(position));
                 }
             }
         });
@@ -81,8 +66,6 @@ public class FriendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     public interface OnClickFriendAdapterListener {
         public void onClickFriendView(Friend friend);
-        public void onClickFriendId(Friend friend);
-        public void onClickFriendTumbnail(Friend friend);
     }
 
     OnClickFriendAdapterListener mListener;

@@ -1,7 +1,6 @@
 package com.github.ojh102.chatproject.main.friend;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -15,8 +14,8 @@ import android.widget.Toast;
 import com.github.ojh102.chatproject.MyApplication;
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.api.ChatApi;
+import com.github.ojh102.chatproject.data.Friend;
 import com.github.ojh102.chatproject.data.ServerResponse;
-import com.github.ojh102.chatproject.main.MainActivity;
 import com.github.ojh102.chatproject.util.DividerItemDecoration;
 import com.github.ojh102.chatproject.util.NetworkManager;
 import com.github.ojh102.chatproject.util.PropertyManager;
@@ -60,20 +59,6 @@ public class FriendSearchActivity extends AppCompatActivity {
         mFriendAdapter.setOnClickFriendAdapterListener(new FriendAdapter.OnClickFriendAdapterListener() {
             @Override
             public void onClickFriendView(Friend friend) {
-                Log.d("ojh","fv click");
-                showAddFriendDialog(friend);
-            }
-
-            @Override
-            public void onClickFriendId(Friend friend) {
-                Log.d("ojh","fi click");
-                showAddFriendDialog(friend);
-
-            }
-
-            @Override
-            public void onClickFriendTumbnail(Friend friend) {
-                Log.d("ojh","ft click");
                 showAddFriendDialog(friend);
             }
         });
@@ -101,7 +86,6 @@ public class FriendSearchActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Friend>>() {
             @Override
             public void onResponse(Call<List<Friend>> call, Response<List<Friend>> response) {
-
                 if (response.isSuccessful()) {
                     mFriendAdapter.add(response.body());
                 } else {

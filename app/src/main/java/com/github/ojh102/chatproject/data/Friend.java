@@ -1,4 +1,4 @@
-package com.github.ojh102.chatproject.main.friend;
+package com.github.ojh102.chatproject.data;
 
 /**
  * Created by OhJaeHwan on 2016-09-24.
@@ -6,6 +6,16 @@ package com.github.ojh102.chatproject.main.friend;
 
 public class Friend {
     private String id;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     private String thumbnail;
 
     public String getId() {

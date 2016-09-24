@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".main.MainActivity" />
         <activity android:name=".intro.IntroActivity" />
+        <activity android:name=".main.friend.FriendSearchActivity"></activity>
+        <activity android:name=".main.chat.ChatAddActivity"></activity>
 
         <service android:name=".service.MyFirebaseMessagingService">
             <intent-filter>
@@ -33,7 +35,6 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".main.friend.FriendSearchActivity"></activity>
     </application>
 
 </manifest>

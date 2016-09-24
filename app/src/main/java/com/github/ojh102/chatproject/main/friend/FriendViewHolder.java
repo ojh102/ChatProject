@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.github.ojh102.chatproject.MyApplication;
 import com.github.ojh102.chatproject.R;
+import com.github.ojh102.chatproject.data.Friend;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,36 +43,16 @@ public class FriendViewHolder extends RecyclerView.ViewHolder {
 
     public void setFriend(Friend friend) {
         mFriend = friend;
-        tvId.setText(mFriend.getId());
+        tvId.setText(mFriend.getName()+"("+mFriend.getId()+")");
         Glide.with(MyApplication.getContext())
                 .load(mFriend.getThumbnail())
                 .bitmapTransform(new CropCircleTransformation(MyApplication.getContext()))
                 .into(ivTumbnail);
 
-        tvId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(onClickFrinedListener != null) {
-                    onClickFrinedListener.onCLickFriendId(getAdapterPosition());
-                }
-            }
-        });
-
-        ivTumbnail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(onClickFrinedListener != null) {
-                    onClickFrinedListener.onCLickFriendTumbnail(getAdapterPosition());
-                }
-            }
-        });
-
     }
 
     public interface OnClickFrinedListener {
         public void onCLickFriendView(int position);
-        public void onCLickFriendId(int position);
-        public void onCLickFriendTumbnail(int position);
     }
 
     OnClickFrinedListener onClickFrinedListener;

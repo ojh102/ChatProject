@@ -1,7 +1,8 @@
 package com.github.ojh102.chatproject.api;
 
+import com.github.ojh102.chatproject.data.ChatRoom;
 import com.github.ojh102.chatproject.data.ServerResponse;
-import com.github.ojh102.chatproject.main.friend.Friend;
+import com.github.ojh102.chatproject.data.Friend;
 
 import java.util.List;
 
@@ -9,7 +10,6 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Query;
@@ -59,4 +59,15 @@ public interface ChatApi {
             @Field("myId") String myId,
             @Field("friendId") String friendId
     );
+
+    //채팅
+    @FormUrlEncoded
+    @POST("chat/room")
+    Call<ServerResponse> createMessage(
+            @Field("myId") String myId,
+            @Field("friendId") String friendId
+    );
+
+    @GET("chat/room")
+    Call<List<ChatRoom>> getRoom(@Query("id") String id);
 }

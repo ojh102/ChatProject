@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.github.ojh102.chatproject.MyApplication;
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.api.ChatApi;
+import com.github.ojh102.chatproject.data.Friend;
 import com.github.ojh102.chatproject.util.DividerItemDecoration;
 import com.github.ojh102.chatproject.util.NetworkManager;
 import com.github.ojh102.chatproject.util.PropertyManager;

@@ -56,8 +56,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Fragment fragment = mAdapter.getFragmentInfo(0).getFragment();
-        if(fragment != null && fragment instanceof FriendFragment) {
-            ((FriendFragment)fragment).getData();
+        if(fragment != null) {
+            if(fragment instanceof FriendFragment) {
+                ((FriendFragment) fragment).getData();
+            } else if(fragment instanceof ChatFragment) {
+                ((ChatFragment)fragment).getData();
+            }
         }
     }
 }

@@ -56,10 +56,6 @@ public class SignUpFragment extends Fragment {
     @BindView(R.id.edtConfirmPassword)
     EditText edtConfirmPasswd;
 
-    File mSavedFile;
-
-    private static int REQUEST_GALLERY = 1000;
-
     public static SignUpFragment newInstance() {
         SignUpFragment fragment = new SignUpFragment();
         return fragment;
@@ -77,6 +73,7 @@ public class SignUpFragment extends Fragment {
         ButterKnife.bind(this, view);
         return view;
     }
+
     @OnClick(R.id.btnSignUp)
     public void onClickSignup() {
         final String id = edtId.getText().toString();
@@ -104,7 +101,7 @@ public class SignUpFragment extends Fragment {
                         PropertyManager.getInstance().setId(id);
                         PropertyManager.getInstance().setName(name);
 
-                        mSavedFile.delete();
+//                        mSavedFile.delete();
 
                         Intent intent = new Intent(getContext(), MainActivity.class);
                         startActivity(intent);
@@ -120,38 +117,41 @@ public class SignUpFragment extends Fragment {
         }
     }
 
-    @OnClick(R.id.ivTumbnail)
-    public void onClickTumbnail() {
-        Intent photoPickerIntent = new Intent(
-                Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        photoPickerIntent.setType("image/*");
-        photoPickerIntent.putExtra("crop", "true");
-        photoPickerIntent.putExtra(MediaStore.EXTRA_OUTPUT, getTempUri());
-        photoPickerIntent.putExtra("outputFormat",
-                Bitmap.CompressFormat.JPEG.toString());
-        photoPickerIntent.putExtra("aspectX", ivTumbnail.getWidth());
-        photoPickerIntent.putExtra("aspectY", ivTumbnail.getHeight());
 
-        startActivityForResult(photoPickerIntent, REQUEST_GALLERY);
-    }
-
-    private Uri getTempUri() {
-        mSavedFile = new File(Environment.getExternalStorageDirectory(), "temp_" + System.currentTimeMillis() / 1000 + ".jpg");
-        return Uri.fromFile(mSavedFile);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode==REQUEST_GALLERY && resultCode == Activity.RESULT_OK) {
-
-            Glide.with(MyApplication.getContext())
-                    .load(data.getData())
-                    .bitmapTransform(new CropCircleTransformation(MyApplication.getContext()))
-                    .into(ivTumbnail);
-
-        }
-    }
-
+//    File mSavedFile;
+//    private static int REQUEST_GALLERY = 1000;
+//
+//    @OnClick(R.id.ivTumbnail)
+//    public void onClickTumbnail() {
+//        Intent photoPickerIntent = new Intent(
+//                Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//        photoPickerIntent.setType("image/*");
+//        photoPickerIntent.putExtra("crop", "true");
+//        photoPickerIntent.putExtra(MediaStore.EXTRA_OUTPUT, getTempUri());
+//        photoPickerIntent.putExtra("outputFormat",
+//                Bitmap.CompressFormat.JPEG.toString());
+//        photoPickerIntent.putExtra("aspectX", ivTumbnail.getWidth());
+//        photoPickerIntent.putExtra("aspectY", ivTumbnail.getHeight());
+//
+//        startActivityForResult(photoPickerIntent, REQUEST_GALLERY);
+//    }
+//
+//    private Uri getTempUri() {
+//        mSavedFile = new File(Environment.getExternalStorageDirectory(), "temp_" + System.currentTimeMillis() / 1000 + ".jpg");
+//        return Uri.fromFile(mSavedFile);
+//    }
+//
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if(requestCode==REQUEST_GALLERY && resultCode == Activity.RESULT_OK) {
+//
+//            Glide.with(MyApplication.getContext())
+//                    .load(data.getData())
+//                    .bitmapTransform(new CropCircleTransformation(MyApplication.getContext()))
+//                    .into(ivTumbnail);
+//
+//        }
+//    }
 }
