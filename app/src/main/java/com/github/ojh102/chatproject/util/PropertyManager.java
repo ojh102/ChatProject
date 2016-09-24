@@ -15,6 +15,7 @@ public class PropertyManager {
     private SharedPreferences.Editor mEditor;
 
     private static final String KEY_ID = "key_id";
+    private static final String KEY_NAME = "key_name";
 
     private PropertyManager() {
         mPref = PreferenceManager.getDefaultSharedPreferences(MyApplication.getContext());
@@ -37,5 +38,19 @@ public class PropertyManager {
 
     public String getId() {
         return mPref.getString(KEY_ID, "");
+    }
+
+    public void setName(String name) {
+        mEditor.putString(KEY_NAME, name);
+        mEditor.apply();
+    }
+
+    public String getname() {
+        return mPref.getString(KEY_NAME, "");
+    }
+
+    public void clear() {
+        mEditor.clear();
+        mEditor.apply();
     }
 }

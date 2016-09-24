@@ -14,4 +14,9 @@
         <item name="android:background">#FFFFFF</item>
     </style>
 
+    <style name="ChatButtonStyle" parent="android:Widget.Button" >
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
 </resources>
