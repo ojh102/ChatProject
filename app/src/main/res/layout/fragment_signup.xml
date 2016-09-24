@@ -20,10 +20,11 @@
         android:layout_marginTop="30dp">
 
         <EditText
+            android:id="@+id/edtId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="id"
-            android:id="@+id/edtId" />
+            android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -31,39 +32,43 @@
         android:id="@+id/tilpw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_below="@id/tilId"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentStart="true">
+        android:layout_marginTop="20dp">
 
         <EditText
+            android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="password"
-            android:id="@+id/edtPassword" />
+            android:inputType="numberPassword"
+            android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_below="@id/tilpw"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentStart="true">
+        android:layout_marginTop="20dp">
 
         <EditText
+            android:id="@+id/edtConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="confirm password"
-            android:id="@+id/edtConfirmPassword" />
+            android:inputType="numberPassword"
+            android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:text="sign up"
-        android:textColor="@color/colorWhite"
+        android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnSignUp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:background="@color/colorPrimary" />
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimary"
+        android:text="sign up"
+        android:textColor="@color/colorWhite" />
 </RelativeLayout>

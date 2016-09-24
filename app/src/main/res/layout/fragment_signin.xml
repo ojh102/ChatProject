@@ -18,44 +18,47 @@
         android:layout_marginTop="30dp">
 
         <EditText
+            android:id="@+id/edtId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="id"
-            android:id="@+id/edtId" />
+            android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_below="@id/tilId"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentStart="true">
+        android:layout_marginTop="20dp">
 
         <EditText
+            android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="password"
-            android:id="@+id/edtPassword" />
+            android:inputType="numberPassword"
+            android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 
 
     <Button
-        android:text="sign in"
-        android:textColor="@color/colorWhite"
+        android:id="@+id/btnSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnSignIn"
+        android:layout_above="@+id/btnSignUp"
         android:layout_marginBottom="10dp"
         android:background="@color/colorPrimary"
-        android:layout_above="@+id/btnSignUp" />
+        android:text="sign in"
+        android:textColor="@color/colorWhite" />
 
     <Button
-        android:text="sign up"
-        android:textColor="@color/colorWhite"
+        android:id="@+id/btnSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnSignUp"
+        android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
-        android:layout_alignParentBottom="true"/>
+        android:text="sign up"
+        android:textColor="@color/colorWhite" />
 
 </RelativeLayout>

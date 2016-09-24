@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.github.ojh102.chatproject.MainActivity;
+import com.github.ojh102.chatproject.main.MainActivity;
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.api.ChatApi;
 import com.github.ojh102.chatproject.data.ServerResponse;
