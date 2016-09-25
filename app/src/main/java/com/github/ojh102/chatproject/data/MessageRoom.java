@@ -1,12 +1,13 @@
 package com.github.ojh102.chatproject.data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by OhJaeHwan on 2016-09-25.
  */
 
-public class MessageRoom {
+public class MessageRoom implements Serializable{
     private List<User> user;
     private String messageId;
     private String lastMessage;

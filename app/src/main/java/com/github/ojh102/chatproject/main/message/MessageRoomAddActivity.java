@@ -55,7 +55,6 @@ public class MessageRoomAddActivity extends AppCompatActivity {
     }
 
     private void initView() {
-
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayShowHomeEnabled(true);

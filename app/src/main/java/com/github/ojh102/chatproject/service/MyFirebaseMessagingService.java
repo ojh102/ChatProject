@@ -25,9 +25,12 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
 import com.github.ojh102.chatproject.R;
+import com.github.ojh102.chatproject.data.MessageData;
 import com.github.ojh102.chatproject.intro.SplashActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+
+import static com.github.ojh102.chatproject.main.message.detail.MessageActivity.FILTER_FCM;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -46,18 +49,31 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
 
-        String title = remoteMessage.getData().get("title");
+        String fromId = remoteMessage.getData().get("fromId");
+        String name = remoteMessage.getData().get("name");
         String message = remoteMessage.getData().get("message");
+        String date = remoteMessage.getData().get("date");
+        String time = remoteMessage.getData().get("time");
 
-        sendNotification(title, message);
+        MessageData data = new MessageData();
+        data.setFromId(fromId);
+        data.setName(name);
+        data.setMessage(message);
+        data.setDate(date);
+        data.setTime(time);
+
+        Intent intent = new Intent(FILTER_FCM);
+        intent.putExtra(MessageData.KEY_MESSAGE_RESPONSE, data);
+        sendBroadcast(intent);
+
+        sendNotification(data);
     }
     // [END receive_message]
     /**
      * Create and show a simple notification containing the received FCM message.
-     * @param title FCM title received.
-     * @param message FCM message received.
+     * @param data FCM Data received.
      */
-    private void sendNotification(String title, String message) {
+    private void sendNotification(MessageData data) {
         Intent intent = new Intent(this, SplashActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -66,8 +82,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle(title)
-                .setContentText(message)
+                .setContentTitle(data.getName())
+                .setContentText(data.getMessage())
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);

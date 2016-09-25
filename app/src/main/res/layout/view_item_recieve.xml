@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivTumbnail"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:textColor="#333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ivTumbnail"
+            android:layout_toEndOf="@+id/ivTumbnail"
+            android:text="name" />
+
+        <TextView
+            android:id="@+id/tvMessage"
+            android:textColor="#333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="50dp"
+            android:text="message"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_below="@+id/tvName"
+            android:layout_toEndOf="@+id/ivTumbnail" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12:00"
+            android:layout_alignBottom="@+id/tvMessage"
+            android:layout_alignEnd="@+id/tvMessage" />
+
+    </RelativeLayout>
+</LinearLayout>

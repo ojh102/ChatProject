@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.api.MessageApi;
 import com.github.ojh102.chatproject.data.MessageRoom;
+import com.github.ojh102.chatproject.main.message.detail.MessageActivity;
 import com.github.ojh102.chatproject.util.DividerItemDecoration;
 import com.github.ojh102.chatproject.util.NetworkManager;
 import com.github.ojh102.chatproject.util.PropertyManager;
@@ -27,6 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.github.ojh102.chatproject.main.message.detail.MessageActivity.KEY_MESSAGE;
 public class MessageRoomFragment extends Fragment {
 
     @BindView(R.id.rvMessage)
@@ -44,14 +46,25 @@ public class MessageRoomFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_message_room, container, false);
         ButterKnife.bind(this, view);
+        initView();
 
+        return view;
+    }
+
+    private void initView() {
         messageRoomAdapter = new MessageRoomAdapter();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
         mRecyclerView.setAdapter(messageRoomAdapter);
+        messageRoomAdapter.setOnClickFriendAdapterListener(new MessageRoomAdapter.OnClickChaTAdapterListener() {
+            @Override
+            public void onClickChatView(MessageRoom messageRoom) {
+                Intent intent = new Intent(getContext(), MessageActivity.class);
+                intent.putExtra(KEY_MESSAGE, messageRoom.getMessageId());
+                startActivity(intent);
+            }
+        });
         getData();
-
-        return view;
     }
 
     public void getData() {

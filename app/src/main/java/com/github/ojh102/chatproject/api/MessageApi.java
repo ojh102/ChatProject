@@ -1,5 +1,7 @@
 package com.github.ojh102.chatproject.api;
 
+import com.github.ojh102.chatproject.data.MessageData;
+import com.github.ojh102.chatproject.data.MessageResponse;
 import com.github.ojh102.chatproject.data.MessageRoom;
 import com.github.ojh102.chatproject.data.ServerResponse;
 import com.github.ojh102.chatproject.data.User;
@@ -74,4 +76,16 @@ public interface MessageApi {
 
     @GET("chat/search")
     Call<List<User>> getValidMessageRooms(@Query("myId") String id);
+
+    //채팅 디테임
+
+    @GET("chat/list")
+    Call<MessageResponse> getMessageList(@Query("messageId") String messageId);
+
+    @FormUrlEncoded
+    @POST("chat/send")
+    Call<ServerResponse> sendMessage(@Field("messageId") String messageId,
+                       @Field("fromId") String fromId,
+                       @Field("message")String message);
+
 }
