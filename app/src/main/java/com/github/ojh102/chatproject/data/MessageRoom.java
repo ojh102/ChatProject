@@ -1,21 +1,23 @@
 package com.github.ojh102.chatproject.data;
 
+import java.util.List;
+
 /**
  * Created by OhJaeHwan on 2016-09-25.
  */
 
-public class ChatRoom {
-    private Friend friend;
+public class MessageRoom {
+    private List<User> user;
     private String messageId;
     private String lastMessage;
     private String lastDate;
 
-    public Friend getFriend() {
-        return friend;
+    public List<User> getUser() {
+        return user;
     }
 
-    public void setFriend(Friend friend) {
-        this.friend = friend;
+    public void setUser(List<User> user) {
+        this.user = user;
     }
 
     public String getMessageId() {

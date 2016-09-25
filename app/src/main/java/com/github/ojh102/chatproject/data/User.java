@@ -4,9 +4,19 @@ package com.github.ojh102.chatproject.data;
  * Created by OhJaeHwan on 2016-09-24.
  */
 
-public class Friend {
+public class User {
     private String id;
     private String name;
+    private String thumbnail;
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public String getName() {
         return name;
@@ -15,8 +25,6 @@ public class Friend {
     public void setName(String name) {
         this.name = name;
     }
-
-    private String thumbnail;
 
     public String getId() {
         return id;

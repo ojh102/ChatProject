@@ -1,8 +1,8 @@
 package com.github.ojh102.chatproject.api;
 
-import com.github.ojh102.chatproject.data.ChatRoom;
+import com.github.ojh102.chatproject.data.MessageRoom;
 import com.github.ojh102.chatproject.data.ServerResponse;
-import com.github.ojh102.chatproject.data.Friend;
+import com.github.ojh102.chatproject.data.User;
 
 import java.util.List;
 
@@ -18,12 +18,13 @@ import retrofit2.http.Query;
  * Created by OhJaeHwan on 2016-09-23.
  */
 
-public interface ChatApi {
+public interface MessageApi {
     //회원가입
     @FormUrlEncoded
     @POST("intro/signup")
     Call<ServerResponse> signUp(
             @Field("id") String id,
+            @Field("name") String name,
             @Field("passwd") String passwd,
             @Field("token") String token
     );
@@ -45,10 +46,10 @@ public interface ChatApi {
 
     //친구
     @GET("friend/list")
-    Call<List<Friend>> getFriendList(@Query("id") String id);
+    Call<List<User>> getFriends(@Query("id") String id);
 
     @GET("friend/search")
-    Call<List<Friend>> getSearchList(
+    Call<List<User>> getSearchFriends(
             @Query("myId") String myId,
             @Query("friendId") String friendId
     );
@@ -63,11 +64,14 @@ public interface ChatApi {
     //채팅
     @FormUrlEncoded
     @POST("chat/room")
-    Call<ServerResponse> createMessage(
+    Call<ServerResponse> createMessageRoom(
             @Field("myId") String myId,
             @Field("friendId") String friendId
     );
 
     @GET("chat/room")
-    Call<List<ChatRoom>> getRoom(@Query("id") String id);
+    Call<List<MessageRoom>> getMessageRooms(@Query("myId") String myId);
+
+    @GET("chat/search")
+    Call<List<User>> getValidMessageRooms(@Query("myId") String id);
 }

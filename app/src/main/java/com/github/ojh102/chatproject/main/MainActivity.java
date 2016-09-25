@@ -8,9 +8,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.main.chat.ChatFragment;
+import com.github.ojh102.chatproject.main.message.MessageRoomFragment;
 import com.github.ojh102.chatproject.main.friend.FriendFragment;
 import com.github.ojh102.chatproject.main.setting.SettingFragment;
+import com.github.ojh102.chatproject.util.BackPressCloseHandler;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,21 +29,24 @@ public class MainActivity extends AppCompatActivity {
 
     MainPagerAdapter mAdapter;
 
+    BackPressCloseHandler backPressCloseHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        setSupportActionBar(mToolbar);
-
         initView();
     }
 
     private void initView() {
+
+        setSupportActionBar(mToolbar);
+        backPressCloseHandler = new BackPressCloseHandler(this);
+
         mAdapter = new MainPagerAdapter(getSupportFragmentManager());
         mAdapter.addFragment(R.drawable.ic_people_outline_white_24dp, "친구", FriendFragment.newInstance());
-        mAdapter.addFragment(R.drawable.ic_message_white_24dp, "메세지", ChatFragment.newInstance());
+        mAdapter.addFragment(R.drawable.ic_message_white_24dp, "메세지", MessageRoomFragment.newInstance());
         mAdapter.addFragment(R.drawable.ic_more_horiz_white_24dp, "더보기", SettingFragment.newInstance());
         mViewPager.setAdapter(mAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
@@ -55,13 +59,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Fragment fragment = mAdapter.getFragmentInfo(0).getFragment();
+        Fragment fragment = mAdapter.getFragmentInfo(mViewPager.getCurrentItem()).getFragment();
         if(fragment != null) {
             if(fragment instanceof FriendFragment) {
                 ((FriendFragment) fragment).getData();
-            } else if(fragment instanceof ChatFragment) {
-                ((ChatFragment)fragment).getData();
+            } else if(fragment instanceof MessageRoomFragment) {
+                ((MessageRoomFragment)fragment).getData();
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        backPressCloseHandler.onBackPressed();
     }
 }

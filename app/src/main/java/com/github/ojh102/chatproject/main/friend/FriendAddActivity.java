@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 import com.github.ojh102.chatproject.MyApplication;
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.api.ChatApi;
-import com.github.ojh102.chatproject.data.Friend;
+import com.github.ojh102.chatproject.api.MessageApi;
+import com.github.ojh102.chatproject.data.User;
 import com.github.ojh102.chatproject.data.ServerResponse;
 import com.github.ojh102.chatproject.util.DividerItemDecoration;
 import com.github.ojh102.chatproject.util.NetworkManager;
@@ -28,7 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FriendSearchActivity extends AppCompatActivity {
+public class FriendAddActivity extends AppCompatActivity {
 
     @BindView(R.id.rvFriend)
     RecyclerView rvFriend;
@@ -43,7 +43,7 @@ public class FriendSearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friend_search);
+        setContentView(R.layout.activity_friend_add);
         ButterKnife.bind(this);
 
         initView();
@@ -58,11 +58,12 @@ public class FriendSearchActivity extends AppCompatActivity {
 
         mFriendAdapter.setOnClickFriendAdapterListener(new FriendAdapter.OnClickFriendAdapterListener() {
             @Override
-            public void onClickFriendView(Friend friend) {
-                showAddFriendDialog(friend);
+            public void onClickFriendView(User user) {
+                showAddFriendDialog(user);
             }
         });
 
+        mToolbar.setTitle("친구의 아이디를 검색해주세요");
         mToolbar.inflateMenu(R.menu.search);
         mSearchView = (SearchView) mToolbar.getMenu().findItem(R.id.menu_search).getActionView();
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -81,11 +82,11 @@ public class FriendSearchActivity extends AppCompatActivity {
     }
 
     private void getSearchFriends(String query) {
-        ChatApi chatApi = NetworkManager.getInstance().getApi(ChatApi.class);
-        Call<List<Friend>> call = chatApi.getSearchList(PropertyManager.getInstance().getId(), query);
-        call.enqueue(new Callback<List<Friend>>() {
+        MessageApi messageApi = NetworkManager.getInstance().getApi(MessageApi.class);
+        Call<List<User>> call = messageApi.getSearchFriends(PropertyManager.getInstance().getId(), query);
+        call.enqueue(new Callback<List<User>>() {
             @Override
-            public void onResponse(Call<List<Friend>> call, Response<List<Friend>> response) {
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if (response.isSuccessful()) {
                     mFriendAdapter.add(response.body());
                 } else {
@@ -94,29 +95,27 @@ public class FriendSearchActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Friend>> call, Throwable t) {
+            public void onFailure(Call<List<User>> call, Throwable t) {
                 Log.d("ojh", t.getMessage());
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void showAddFriendDialog(final Friend friend) {
-        AlertDialog dialog = new AlertDialog.Builder(FriendSearchActivity.this, R.style.AppCompatAlertDialogStyle)
+    public void showAddFriendDialog(final User user) {
+        AlertDialog dialog = new AlertDialog.Builder(FriendAddActivity.this, R.style.AppCompatAlertDialogStyle)
                 .setTitle("친구 추가")
-                .setMessage(friend.getId() + "님을 친구로 추가하시겠습니까?")
+                .setMessage(user.getName()+"("+user.getId() +")님을 친구로 추가하시겠습니까?")
                 .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ChatApi chatApi = NetworkManager.getInstance().getApi(ChatApi.class);
-                        Call<ServerResponse> call = chatApi.addFriend(PropertyManager.getInstance().getId(), friend.getId());
+                        MessageApi messageApi = NetworkManager.getInstance().getApi(MessageApi.class);
+                        Call<ServerResponse> call = messageApi.addFriend(PropertyManager.getInstance().getId(), user.getId());
                         call.enqueue(new Callback<ServerResponse>() {
                             @Override
                             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                                 Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                if(response.body().getSuccess() == 1) {
-                                    finish();
-                                }
+                                finish();
                             }
 
                             @Override

@@ -1,14 +1,8 @@
 package com.github.ojh102.chatproject.intro;
 
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -18,23 +12,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.github.ojh102.chatproject.MyApplication;
+import com.github.ojh102.chatproject.api.MessageApi;
 import com.github.ojh102.chatproject.main.MainActivity;
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.api.ChatApi;
 import com.github.ojh102.chatproject.data.ServerResponse;
 import com.github.ojh102.chatproject.util.NetworkManager;
 import com.github.ojh102.chatproject.util.PropertyManager;
 import com.google.firebase.iid.FirebaseInstanceId;
 
-import java.io.File;
-import java.io.IOException;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -91,8 +79,8 @@ public class SignUpFragment extends Fragment {
         } else if (!passwd.equals(confirmPasswd)) {
             Toast.makeText(getContext(), "비밀번호가 맞지 않습니다.", Toast.LENGTH_SHORT).show();
         } else {
-            ChatApi chatApi = NetworkManager.getInstance().getApi(ChatApi.class);
-            Call<ServerResponse> call = chatApi.signUp(id, passwd, token);
+            MessageApi messageApi = NetworkManager.getInstance().getApi(MessageApi.class);
+            Call<ServerResponse> call = messageApi.signUp(id, name, passwd, token);
             call.enqueue(new Callback<ServerResponse>() {
                 @Override
                 public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {

@@ -1,4 +1,4 @@
-package com.github.ojh102.chatproject.main.friend;
+package com.github.ojh102.chatproject.main.message;
 
 
 import android.content.Intent;
@@ -11,10 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.github.ojh102.chatproject.MyApplication;
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.api.MessageApi;
-import com.github.ojh102.chatproject.data.User;
+import com.github.ojh102.chatproject.data.MessageRoom;
 import com.github.ojh102.chatproject.util.DividerItemDecoration;
 import com.github.ojh102.chatproject.util.NetworkManager;
 import com.github.ojh102.chatproject.util.PropertyManager;
@@ -28,33 +27,28 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FriendFragment extends Fragment {
+public class MessageRoomFragment extends Fragment {
 
-    @BindView(R.id.rvFriend)
-    RecyclerView rvFriend;
+    @BindView(R.id.rvMessage)
+    RecyclerView mRecyclerView;
 
-    FriendAdapter mFriendAdapter;
+    MessageRoomAdapter messageRoomAdapter;
 
-    public static FriendFragment newInstance() {
-        FriendFragment fragment = new FriendFragment();
+    public static MessageRoomFragment newInstance() {
+        MessageRoomFragment fragment = new MessageRoomFragment();
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_friend, container, false);
+        View view = inflater.inflate(R.layout.fragment_message_room, container, false);
         ButterKnife.bind(this, view);
 
-        mFriendAdapter = new FriendAdapter();
-        rvFriend.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvFriend.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.VERTICAL_LIST));
-        rvFriend.setAdapter(mFriendAdapter);
+        messageRoomAdapter = new MessageRoomAdapter();
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
+        mRecyclerView.setAdapter(messageRoomAdapter);
         getData();
 
         return view;
@@ -62,30 +56,29 @@ public class FriendFragment extends Fragment {
 
     public void getData() {
         MessageApi messageApi = NetworkManager.getInstance().getApi(MessageApi.class);
-        Call<List<User>> call = messageApi.getFriends(PropertyManager.getInstance().getId());
-        call.enqueue(new Callback<List<User>>() {
+        Call<List<MessageRoom>> call = messageApi.getMessageRooms(PropertyManager.getInstance().getId());
+        call.enqueue(new Callback<List<MessageRoom>>() {
             @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+            public void onResponse(Call<List<MessageRoom>> call, Response<List<MessageRoom>> response) {
                 if(response.isSuccessful()) {
-                    if(response.body()!=null)
-                        mFriendAdapter.add(response.body());
+                    messageRoomAdapter.add(response.body());
                 } else {
                     Toast.makeText(getContext(), "network fail", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
+            public void onFailure(Call<List<MessageRoom>> call, Throwable t) {
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
-    @OnClick(R.id.btnAddFriend)
-    public void onClickAddFriend() {
-        Intent intent = new Intent(getContext(), FriendAddActivity.class);
+    @OnClick(R.id.btnAddMessageRoom)
+    public void onClickAddMessageRoom() {
+        Intent intent = new Intent(getContext(), MessageRoomAddActivity.class);
         startActivity(intent);
     }
-
 
 }

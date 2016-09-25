@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.data.Friend;
+import com.github.ojh102.chatproject.data.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 
 public class FriendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    List<Friend> items = new ArrayList<>();
+    List<User> items = new ArrayList<>();
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -43,8 +43,8 @@ public class FriendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return items.size();
     }
 
-    public void add(List<Friend> friends) {
-        items = friends;
+    public void add(List<User> users) {
+        items = users;
         notifyDataSetChanged();
     }
 
@@ -56,7 +56,7 @@ public class FriendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     public void getDummyData() {
         for(int i=0; i<10; i++) {
-            Friend item = new Friend();
+            User item = new User();
             item.setId("test"+i);
             item.setThumbnail("http://pncg.co.kr/upload/menu/11364366473.png");
             items.add(item);
@@ -65,7 +65,7 @@ public class FriendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public interface OnClickFriendAdapterListener {
-        public void onClickFriendView(Friend friend);
+        public void onClickFriendView(User user);
     }
 
     OnClickFriendAdapterListener mListener;

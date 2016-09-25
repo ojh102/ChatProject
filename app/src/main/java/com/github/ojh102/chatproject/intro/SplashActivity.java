@@ -8,9 +8,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.github.ojh102.chatproject.api.MessageApi;
 import com.github.ojh102.chatproject.main.MainActivity;
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.api.ChatApi;
 import com.github.ojh102.chatproject.data.ServerResponse;
 import com.github.ojh102.chatproject.util.NetworkManager;
 import com.github.ojh102.chatproject.util.PropertyManager;
@@ -44,8 +44,8 @@ public class SplashActivity extends AppCompatActivity {
                 //저장된 아이디가 있을 시 자동로그인
                 if (!TextUtils.isEmpty(id)) {
                     //아이디에 토큰 put
-                    ChatApi chatApi = NetworkManager.getInstance().getApi(ChatApi.class);
-                    Call<ServerResponse> call = chatApi.registerToken(id, FirebaseInstanceId.getInstance().getToken());
+                    MessageApi messageApi = NetworkManager.getInstance().getApi(MessageApi.class);
+                    Call<ServerResponse> call = messageApi.registerToken(id, FirebaseInstanceId.getInstance().getToken());
                     call.enqueue(new Callback<ServerResponse>() {
 
                         Intent intent;

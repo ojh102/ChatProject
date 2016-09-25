@@ -1,7 +1,5 @@
 package com.github.ojh102.chatproject.util;
 
-import com.github.ojh102.chatproject.api.ChatApi;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

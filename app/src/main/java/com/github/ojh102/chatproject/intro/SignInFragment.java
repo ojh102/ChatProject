@@ -11,10 +11,11 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.github.ojh102.chatproject.api.MessageApi;
 import com.github.ojh102.chatproject.main.MainActivity;
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.api.ChatApi;
 import com.github.ojh102.chatproject.data.ServerResponse;
+import com.github.ojh102.chatproject.util.BackPressCloseHandler;
 import com.github.ojh102.chatproject.util.NetworkManager;
 import com.github.ojh102.chatproject.util.PropertyManager;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -39,15 +40,11 @@ public class SignInFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signin, container, false);
         ButterKnife.bind(this, view);
+
         return view;
     }
 
@@ -63,8 +60,8 @@ public class SignInFragment extends Fragment {
         } else if (TextUtils.isEmpty(passwd)) {
             Toast.makeText(getContext(), "비밀번호를 입력해 주세요", Toast.LENGTH_SHORT).show();
         } else {
-            ChatApi chatApi = NetworkManager.getInstance().getApi(ChatApi.class);
-            Call<ServerResponse> call = chatApi.signIn(id, passwd, token);
+            MessageApi messageApi = NetworkManager.getInstance().getApi(MessageApi.class);
+            Call<ServerResponse> call = messageApi.signIn(id, passwd, token);
             call.enqueue(new Callback<ServerResponse>() {
                 @Override
                 public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {

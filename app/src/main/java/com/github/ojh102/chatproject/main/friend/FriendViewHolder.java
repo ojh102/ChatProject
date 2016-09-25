@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.github.ojh102.chatproject.MyApplication;
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.data.Friend;
+import com.github.ojh102.chatproject.data.User;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,7 +26,7 @@ public class FriendViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.ivTumbnail)
     ImageView ivTumbnail;
 
-    Friend mFriend;
+    User mUser;
 
     public FriendViewHolder(View itemView) {
         super(itemView);
@@ -41,12 +41,13 @@ public class FriendViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void setFriend(Friend friend) {
-        mFriend = friend;
-        tvId.setText(mFriend.getName()+"("+mFriend.getId()+")");
+    public void setFriend(User user) {
+        mUser = user;
+        tvId.setText(mUser.getName()+"("+ mUser.getId()+")");
         Glide.with(MyApplication.getContext())
-                .load(mFriend.getThumbnail())
+                .load(R.drawable.ic_person_black_48dp)
                 .bitmapTransform(new CropCircleTransformation(MyApplication.getContext()))
+                .centerCrop()
                 .into(ivTumbnail);
 
     }
