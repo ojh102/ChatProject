@@ -9,6 +9,7 @@ public class User {
     private String name;
     private String thumbnail;
     private String token;
+    private boolean messageCheck;
 
     public String getToken() {
         return token;
@@ -41,4 +42,14 @@ public class User {
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
     }
+
+
+    public boolean isMessageCheck() {
+        return messageCheck;
+    }
+
+    public void setMessageCheck(boolean messageCheck) {
+        this.messageCheck = messageCheck;
+    }
+
 }

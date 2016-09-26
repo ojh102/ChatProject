@@ -18,7 +18,7 @@ import java.util.List;
 
 public class MessageRoomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    List<MessageRoom> items = new ArrayList<>();
+    public List<MessageRoom> items = new ArrayList<>();
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

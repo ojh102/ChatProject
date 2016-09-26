@@ -83,7 +83,7 @@ public class MessageActivity extends AppCompatActivity {
     private void getData() {
 
         MessageApi messageApi = NetworkManager.getInstance().getApi(MessageApi.class);
-        Call<MessageResponse> call = messageApi.getMessageList(messageId);
+        Call<MessageResponse> call = messageApi.getMessageList(messageId, PropertyManager.getInstance().getId());
         call.enqueue(new Callback<MessageResponse>() {
             @Override
             public void onResponse(Call<MessageResponse> call, Response<MessageResponse> response) {
@@ -92,8 +92,9 @@ public class MessageActivity extends AppCompatActivity {
                     cAdapter.clear();
                     for (MessageData item : items) {
                         cAdapter.add(item);
-                        recyclerView.scrollToPosition(items.size() - 1);
+//                        recyclerView.scrollToPosition(items.size() - 1);
                     }
+                    recyclerView.scrollToPosition(cAdapter.getItemCount()-1);
                 } else {
                     Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_SHORT).show();
                 }
@@ -145,11 +146,12 @@ public class MessageActivity extends AppCompatActivity {
     private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            MessageData data = (MessageData) intent.getSerializableExtra(MessageData.KEY_MESSAGE_RESPONSE);
-            if (cAdapter != null && recyclerView != null) {
-                cAdapter.add(data);
-                recyclerView.scrollToPosition(cAdapter.items.size() - 1);
-            }
+            getData();
+//            MessageData data = (MessageData) intent.getSerializableExtra(MessageData.KEY_MESSAGE_RESPONSE);
+//            if (cAdapter != null && recyclerView != null) {
+//                cAdapter.add(data);
+//            recyclerView.scrollToPosition(cAdapter.items.size() - 1);
+//            }
 
         }
     };

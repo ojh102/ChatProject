@@ -12,6 +12,8 @@ import com.github.ojh102.chatproject.data.MessageRoom;
 import com.github.ojh102.chatproject.data.User;
 import com.github.ojh102.chatproject.util.PropertyManager;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
@@ -61,11 +63,21 @@ public class MessageRoomViewHolder extends RecyclerView.ViewHolder {
             }
         }
 
-//        if(messageRoom.getLastId() != null && messageRoom.getLastId().equals(friend.getId())) {
-//            tvAlarm.setVisibility(View.VISIBLE);
-//        } else {
-//            tvAlarm.setVisibility(View.GONE);
-//        }
+        List<User> users = messageRoom.getUser();
+        if(users != null) {
+            for(User user : users) {
+                if(user.getId().equals(PropertyManager.getInstance().getId())) {
+                    if(!user.isMessageCheck()) {
+                        tvAlarm.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        tvAlarm.setVisibility(View.GONE);
+                    }
+                }
+            }
+        } else {
+            tvAlarm.setVisibility(View.GONE);
+        }
 
         tvName.setText(friend.getName()+"("+friend.getId()+")");
         if(mMessageRoom.getLastMessage() != null) {

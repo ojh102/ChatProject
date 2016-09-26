@@ -80,7 +80,8 @@ public interface MessageApi {
     //채팅 디테임
 
     @GET("chat/list")
-    Call<MessageResponse> getMessageList(@Query("messageId") String messageId);
+    Call<MessageResponse> getMessageList(@Query("messageId") String messageId,
+                                         @Query("myId") String myId);
 
     @FormUrlEncoded
     @POST("chat/send")

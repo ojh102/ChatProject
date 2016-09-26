@@ -1,5 +1,9 @@
 package com.github.ojh102.chatproject.main;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -15,6 +19,8 @@ import com.github.ojh102.chatproject.util.BackPressCloseHandler;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.github.ojh102.chatproject.main.message.detail.MessageActivity.FILTER_FCM;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initView();
+        registerReceiver(mMessageReceiver, new IntentFilter(FILTER_FCM));
     }
-
     private void initView() {
 
         setSupportActionBar(mToolbar);
@@ -98,4 +104,24 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         backPressCloseHandler.onBackPressed();
     }
+
+
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            MessageRoomFragment fragment = (MessageRoomFragment)mAdapter.getFragmentInfo(1).getFragment();
+            fragment.getData();
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(mMessageReceiver);
+        super.onDestroy();
+    }
+
+
 }
+
+
+
