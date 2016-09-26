@@ -13,10 +13,9 @@ import com.github.ojh102.chatproject.util.PropertyManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-/**
- * Created by Lady on 2016. 9. 10..
- */
+
 public class MessageAdapter extends RecyclerView.Adapter {
 
     List<MessageData> items = new ArrayList<>();
@@ -86,13 +85,20 @@ public class MessageAdapter extends RecyclerView.Adapter {
     }
 
     public void add(MessageData item) {
+
         if(items.size() == 0) {
+            MessageData dateData = new MessageData();
+            dateData.setDate(item.getDate());
+            dateData.setType(MessageData.TYPE_DATE);
             item.setType(MessageData.TYPE_DATE);
-            items.add(item);
-        } else if(item != null && items.get(items.size()-2).getDate() != null
-                && item.getDate().compareTo(items.get(items.size()-2).getDate()) < 0 ) {
+            items.add(dateData);
+
+        } else if(item != null && items.size() > 1 && item.getDate().compareTo(items.get(items.size()-2).getDate()) != 0 ) {
+            MessageData dateData = new MessageData();
+            dateData.setDate(item.getDate());
+            dateData.setType(MessageData.TYPE_DATE);
             item.setType(MessageData.TYPE_DATE);
-            items.add(item);
+            items.add(dateData);
         }
 
         if(item.getFromId().equals(PropertyManager.getInstance().getId())) {

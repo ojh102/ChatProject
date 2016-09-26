@@ -16,6 +16,7 @@ public class PropertyManager {
 
     private static final String KEY_ID = "key_id";
     private static final String KEY_NAME = "key_name";
+    private static final String KEY_ALRAM = "key_alram";
 
     private PropertyManager() {
         mPref = PreferenceManager.getDefaultSharedPreferences(MyApplication.getContext());
@@ -49,8 +50,19 @@ public class PropertyManager {
         return mPref.getString(KEY_NAME, "");
     }
 
+    public void setAlram(boolean alram) {
+        mEditor.putBoolean(KEY_ALRAM, alram);
+        mEditor.apply();
+    }
+
+    public boolean getAlram() {
+        return mPref.getBoolean(KEY_ALRAM, true);
+    }
+
     public void clear() {
         mEditor.clear();
         mEditor.apply();
     }
+
+
 }

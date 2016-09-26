@@ -21,18 +21,6 @@ public class MessageData implements Serializable {
     private String date;
     private String time;
 
-    public static int getTypeReceive() {
-        return TYPE_RECEIVE;
-    }
-
-    public static int getTypeDate() {
-        return TYPE_DATE;
-    }
-
-    public static int getTypeSend() {
-        return TYPE_SEND;
-    }
-
     public int getType() {
         return type;
     }

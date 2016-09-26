@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -22,6 +23,8 @@ import com.github.ojh102.chatproject.data.MessageResponse;
 import com.github.ojh102.chatproject.data.ServerResponse;
 import com.github.ojh102.chatproject.util.NetworkManager;
 import com.github.ojh102.chatproject.util.PropertyManager;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -72,6 +75,9 @@ public class MessageActivity extends AppCompatActivity {
         messageId = getIntent().getStringExtra(KEY_MESSAGE);
         getData();
 
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editMessage.getApplicationWindowToken(), 0);
+
     }
 
     private void getData() {
@@ -105,6 +111,11 @@ public class MessageActivity extends AppCompatActivity {
         String fromId = PropertyManager.getInstance().getId();
         String message = editMessage.getText().toString();
 
+        if(TextUtils.isEmpty(message)) {
+            Toast.makeText(getApplicationContext(), "메세지를 입력하세요", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         editMessage.setText("");
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editMessage.getApplicationWindowToken(), 0);
@@ -135,8 +146,9 @@ public class MessageActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             MessageData data = (MessageData) intent.getSerializableExtra(MessageData.KEY_MESSAGE_RESPONSE);
-            if (cAdapter != null) {
+            if (cAdapter != null && recyclerView != null) {
                 cAdapter.add(data);
+                recyclerView.scrollToPosition(cAdapter.items.size() - 1);
             }
 
         }

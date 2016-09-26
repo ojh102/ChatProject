@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="16dp"
+    android:gravity="center_horizontal">
+
 
     <Button
         android:id="@+id/btnBack"
@@ -12,6 +14,25 @@
         android:layout_height="wrap_content"
         android:paddingEnd="8dp"
         android:paddingStart="8dp"
-        android:text="로그인 화면으로 이동" />
+        android:text="로그인 화면으로 이동"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <android.support.v7.widget.SwitchCompat
+            android:text="푸쉬 진동 On/Off"
+            app:switchMinWidth="60dp"
+            app:switchPadding="10dp"
+            android:id="@+id/switchAlarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+</RelativeLayout>

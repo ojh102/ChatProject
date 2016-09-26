@@ -31,6 +31,9 @@ public class MessageRoomViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.tvLastDate)
     TextView tvLastDate;
 
+    @BindView(R.id.tvAlarm)
+    TextView tvAlarm;
+
     @BindView(R.id.ivTumbnail)
     ImageView ivTumbnail;
 
@@ -57,6 +60,12 @@ public class MessageRoomViewHolder extends RecyclerView.ViewHolder {
                 friend = user;
             }
         }
+
+//        if(messageRoom.getLastId() != null && messageRoom.getLastId().equals(friend.getId())) {
+//            tvAlarm.setVisibility(View.VISIBLE);
+//        } else {
+//            tvAlarm.setVisibility(View.GONE);
+//        }
 
         tvName.setText(friend.getName()+"("+friend.getId()+")");
         if(mMessageRoom.getLastMessage() != null) {

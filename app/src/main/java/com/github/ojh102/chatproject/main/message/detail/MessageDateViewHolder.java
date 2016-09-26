@@ -9,9 +9,6 @@ import com.github.ojh102.chatproject.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by Lady on 2016. 9. 10..
- */
 public class MessageDateViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.tvDate)

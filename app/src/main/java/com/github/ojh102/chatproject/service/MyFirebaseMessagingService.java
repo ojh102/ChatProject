@@ -27,6 +27,7 @@ import android.support.v4.app.NotificationCompat;
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.data.MessageData;
 import com.github.ojh102.chatproject.intro.SplashActivity;
+import com.github.ojh102.chatproject.util.PropertyManager;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -79,7 +80,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
-        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Uri defaultSoundUri = null;
+        if(PropertyManager.getInstance().getAlram()) {
+            defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        }
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(data.getName())

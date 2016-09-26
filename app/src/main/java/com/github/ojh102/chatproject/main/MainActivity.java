@@ -54,11 +54,36 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < mViewPager.getAdapter().getCount(); i++) {
             mTabLayout.getTabAt(i).setIcon(mAdapter.getFragmentInfo(i).getIconResId());
         }
+
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                dataRefresh();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        dataRefresh();
+    }
+
+    private void dataRefresh() {
+        if(mAdapter==null || mViewPager == null) {
+            return;
+        }
+
         Fragment fragment = mAdapter.getFragmentInfo(mViewPager.getCurrentItem()).getFragment();
         if(fragment != null) {
             if(fragment instanceof FriendFragment) {

@@ -10,6 +10,7 @@ import java.util.List;
 public class MessageRoom implements Serializable{
     private List<User> user;
     private String messageId;
+    private String lastId;
     private String lastMessage;
     private String lastDate;
 
@@ -31,6 +32,14 @@ public class MessageRoom implements Serializable{
 
     public String getLastMessage() {
         return lastMessage;
+    }
+
+    public String getLastId() {
+        return lastId;
+    }
+
+    public void setLastId(String lastId) {
+        this.lastId = lastId;
     }
 
     public void setLastMessage(String lastMessage) {
