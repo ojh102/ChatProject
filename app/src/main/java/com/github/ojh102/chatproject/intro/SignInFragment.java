@@ -11,11 +11,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.github.ojh102.chatproject.api.MessageApi;
+import com.github.ojh102.chatproject.common.MessageApi;
 import com.github.ojh102.chatproject.main.MainActivity;
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.data.ServerResponse;
-import com.github.ojh102.chatproject.util.BackPressCloseHandler;
 import com.github.ojh102.chatproject.util.NetworkManager;
 import com.github.ojh102.chatproject.util.PropertyManager;
 import com.google.firebase.iid.FirebaseInstanceId;

@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.github.ojh102.chatproject.api.MessageApi;
+import com.github.ojh102.chatproject.common.MessageApi;
 import com.github.ojh102.chatproject.main.MainActivity;
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.data.ServerResponse;
@@ -135,9 +135,9 @@ public class SignUpFragment extends Fragment {
 //
 //        if(requestCode==REQUEST_GALLERY && resultCode == Activity.RESULT_OK) {
 //
-//            Glide.with(MyApplication.getContext())
+//            Glide.with(MyApp.getContext())
 //                    .load(data.getData())
-//                    .bitmapTransform(new CropCircleTransformation(MyApplication.getContext()))
+//                    .bitmapTransform(new CropCircleTransformation(MyApp.getContext()))
 //                    .into(ivTumbnail);
 //
 //        }

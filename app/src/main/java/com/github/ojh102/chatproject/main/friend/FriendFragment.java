@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.github.ojh102.chatproject.MyApplication;
+import com.github.ojh102.chatproject.common.MyApp;
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.api.MessageApi;
+import com.github.ojh102.chatproject.common.MessageApi;
 import com.github.ojh102.chatproject.data.User;
 import com.github.ojh102.chatproject.util.DividerItemDecoration;
 import com.github.ojh102.chatproject.util.NetworkManager;
@@ -53,7 +53,7 @@ public class FriendFragment extends Fragment {
 
         mFriendAdapter = new FriendAdapter();
         rvFriend.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvFriend.addItemDecoration(new DividerItemDecoration(MyApplication.getContext(), DividerItemDecoration.VERTICAL_LIST));
+        rvFriend.addItemDecoration(new DividerItemDecoration(MyApp.getContext(), DividerItemDecoration.VERTICAL_LIST));
         rvFriend.setAdapter(mFriendAdapter);
         getData();
 

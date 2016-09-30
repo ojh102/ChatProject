@@ -8,12 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.api.MessageApi;
+import com.github.ojh102.chatproject.common.MessageApi;
 import com.github.ojh102.chatproject.data.ServerResponse;
 import com.github.ojh102.chatproject.data.User;
 import com.github.ojh102.chatproject.main.friend.FriendAdapter;
@@ -29,7 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.github.ojh102.chatproject.MyApplication.getContext;
+import static com.github.ojh102.chatproject.common.MyApp.getContext;
 
 /**
  * Created by OhJaeHwan on 2016-09-25.

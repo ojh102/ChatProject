@@ -17,14 +17,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.api.MessageApi;
+import com.github.ojh102.chatproject.common.MessageApi;
 import com.github.ojh102.chatproject.data.MessageData;
 import com.github.ojh102.chatproject.data.MessageResponse;
 import com.github.ojh102.chatproject.data.ServerResponse;
 import com.github.ojh102.chatproject.util.NetworkManager;
 import com.github.ojh102.chatproject.util.PropertyManager;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
