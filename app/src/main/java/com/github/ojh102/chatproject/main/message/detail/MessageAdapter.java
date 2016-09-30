@@ -6,14 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.github.ojh102.chatproject.MyApplication;
+import com.github.ojh102.chatproject.common.MyApp;
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.data.MessageData;
 import com.github.ojh102.chatproject.util.PropertyManager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 
 public class MessageAdapter extends RecyclerView.Adapter {
@@ -67,7 +66,7 @@ public class MessageAdapter extends RecyclerView.Adapter {
                 ((MessageSendViewHolder)holder).tvTime.setText(items.get(position).getTime());
                 break;
             case VIEW_TYPE_RECEIVE:
-                Glide.with(MyApplication.getContext())
+                Glide.with(MyApp.getContext())
                         .load(R.drawable.ic_person_black_48dp)
                         .centerCrop()
                         .into(((MessageReceiverViewHolder)holder).ivTumbnail);

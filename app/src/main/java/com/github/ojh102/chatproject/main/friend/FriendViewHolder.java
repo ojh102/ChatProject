@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.github.ojh102.chatproject.MyApplication;
+import com.github.ojh102.chatproject.common.MyApp;
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.data.User;
 
@@ -44,9 +44,9 @@ public class FriendViewHolder extends RecyclerView.ViewHolder {
     public void setFriend(User user) {
         mUser = user;
         tvId.setText(mUser.getName()+"("+ mUser.getId()+")");
-        Glide.with(MyApplication.getContext())
+        Glide.with(MyApp.getContext())
                 .load(R.drawable.ic_person_black_48dp)
-                .bitmapTransform(new CropCircleTransformation(MyApplication.getContext()))
+                .bitmapTransform(new CropCircleTransformation(MyApp.getContext()))
                 .centerCrop()
                 .into(ivTumbnail);
 

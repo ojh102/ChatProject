@@ -1,6 +1,5 @@
-package com.github.ojh102.chatproject.api;
+package com.github.ojh102.chatproject.common;
 
-import com.github.ojh102.chatproject.data.MessageData;
 import com.github.ojh102.chatproject.data.MessageResponse;
 import com.github.ojh102.chatproject.data.MessageRoom;
 import com.github.ojh102.chatproject.data.ServerResponse;
@@ -20,6 +19,7 @@ import retrofit2.http.Query;
  * Created by OhJaeHwan on 2016-09-23.
  */
 
+//api
 public interface MessageApi {
     //회원가입
     @FormUrlEncoded
@@ -63,7 +63,7 @@ public interface MessageApi {
             @Field("friendId") String friendId
     );
 
-    //채팅
+    //채팅방
     @FormUrlEncoded
     @POST("chat/room")
     Call<ServerResponse> createMessageRoom(
@@ -77,8 +77,7 @@ public interface MessageApi {
     @GET("chat/search")
     Call<List<User>> getValidMessageRooms(@Query("myId") String id);
 
-    //채팅 디테임
-
+    //채팅
     @GET("chat/list")
     Call<MessageResponse> getMessageList(@Query("messageId") String messageId,
                                          @Query("myId") String myId);
@@ -86,7 +85,8 @@ public interface MessageApi {
     @FormUrlEncoded
     @POST("chat/send")
     Call<ServerResponse> sendMessage(@Field("messageId") String messageId,
-                       @Field("fromId") String fromId,
-                       @Field("message")String message);
+                                     @Field("fromId") String fromId,
+                                     @Field("message") String message);
 
 }
+

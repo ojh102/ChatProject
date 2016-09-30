@@ -3,7 +3,7 @@ package com.github.ojh102.chatproject.util;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.github.ojh102.chatproject.MyApplication;
+import com.github.ojh102.chatproject.common.MyApp;
 
 /**
  * Created by OhJaeHwan on 2016-09-23.
@@ -19,7 +19,7 @@ public class PropertyManager {
     private static final String KEY_ALRAM = "key_alram";
 
     private PropertyManager() {
-        mPref = PreferenceManager.getDefaultSharedPreferences(MyApplication.getContext());
+        mPref = PreferenceManager.getDefaultSharedPreferences(MyApp.getContext());
         mEditor = mPref.edit();
     }
 
