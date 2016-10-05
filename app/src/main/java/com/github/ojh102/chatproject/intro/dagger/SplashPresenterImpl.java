@@ -1,10 +1,9 @@
 package com.github.ojh102.chatproject.intro.dagger;
 
-import android.content.Intent;
 import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 
-import com.github.ojh102.chatproject.common.MessageApi;
 import com.github.ojh102.chatproject.common.dagger.ChatApi;
 import com.github.ojh102.chatproject.data.ServerResponse;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -23,18 +22,16 @@ public class SplashPresenterImpl implements SplashPresenter {
 
     private View view;
     private ChatApi chatApi;
-    private Handler handler;
 
     @Inject
-    public SplashPresenterImpl(View view, ChatApi chatApi, Handler handler) {
+    public SplashPresenterImpl(View view, ChatApi chatApi) {
         this.view = view;
         this.chatApi = chatApi;
-        this.handler = handler;
     }
 
     @Override
     public void checkLogin(String id) {
-        handler.postDelayed(() -> {
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
             if (!TextUtils.isEmpty(id)) {
                 chatApi.registerToken(id, FirebaseInstanceId.getInstance().getToken()).enqueue(new Callback<ServerResponse>() {
 

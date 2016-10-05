@@ -6,8 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.common.dagger.BackgroundModule;
-import com.github.ojh102.chatproject.common.dagger.NetworkModule;
+import com.github.ojh102.chatproject.common.BaseActivity;
+import com.github.ojh102.chatproject.common.MyApp;
+import com.github.ojh102.chatproject.common.dagger.NetworkComponent;
 import com.github.ojh102.chatproject.intro.dagger.DaggerSplashComponent;
 import com.github.ojh102.chatproject.intro.dagger.SplashModule;
 import com.github.ojh102.chatproject.intro.dagger.SplashPresenter;
@@ -16,7 +17,7 @@ import com.github.ojh102.chatproject.util.PropertyManager;
 
 import javax.inject.Inject;
 
-public class SplashActivity extends AppCompatActivity implements SplashPresenter.View{
+public class SplashActivity extends BaseActivity implements SplashPresenter.View{
 
     @Inject
     SplashPresenter splashPresenter;
@@ -25,15 +26,16 @@ public class SplashActivity extends AppCompatActivity implements SplashPresenter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        checkLogin();
+    }
 
+    @Override
+    protected void setupComponent(NetworkComponent networkComponent) {
         DaggerSplashComponent.builder()
-                .backgroundModule(new BackgroundModule())
-                .networkModule(new NetworkModule())
+                .networkComponent(networkComponent)
                 .splashModule(new SplashModule(this))
                 .build()
                 .inject(this);
-
-        checkLogin();
     }
 
     private void checkLogin() {
