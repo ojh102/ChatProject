@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.github.ojh102.chatproject.common.dagger.AppModule;
+import com.github.ojh102.chatproject.common.dagger.BackgroundModule;
 import com.github.ojh102.chatproject.common.dagger.DaggerNetworkComponent;
 import com.github.ojh102.chatproject.common.dagger.NetworkComponent;
 import com.github.ojh102.chatproject.common.dagger.NetworkModule;
@@ -25,6 +26,7 @@ public class MyApp extends Application {
 
         mNetworkComponent = DaggerNetworkComponent.builder()
                 .appModule(new AppModule(this))
+                .backgroundModule(new BackgroundModule())
                 .networkModule(new NetworkModule())
                 .build();
 

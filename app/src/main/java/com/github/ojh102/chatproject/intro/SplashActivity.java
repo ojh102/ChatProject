@@ -2,12 +2,10 @@ package com.github.ojh102.chatproject.intro;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.common.BaseActivity;
-import com.github.ojh102.chatproject.common.MyApp;
 import com.github.ojh102.chatproject.common.dagger.NetworkComponent;
 import com.github.ojh102.chatproject.intro.dagger.DaggerSplashComponent;
 import com.github.ojh102.chatproject.intro.dagger.SplashModule;

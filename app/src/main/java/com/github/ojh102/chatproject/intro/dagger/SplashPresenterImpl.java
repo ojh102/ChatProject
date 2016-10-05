@@ -9,6 +9,7 @@ import com.github.ojh102.chatproject.data.ServerResponse;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,17 +22,19 @@ import retrofit2.Response;
 public class SplashPresenterImpl implements SplashPresenter {
 
     private View view;
+    private Handler handler;
     private ChatApi chatApi;
 
     @Inject
-    public SplashPresenterImpl(View view, ChatApi chatApi) {
+    public SplashPresenterImpl(View view, @Named("main_thread")Handler handler, ChatApi chatApi) {
         this.view = view;
+        this.handler = handler;
         this.chatApi = chatApi;
     }
 
     @Override
     public void checkLogin(String id) {
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+        handler.postDelayed(() -> {
             if (!TextUtils.isEmpty(id)) {
                 chatApi.registerToken(id, FirebaseInstanceId.getInstance().getToken()).enqueue(new Callback<ServerResponse>() {
 

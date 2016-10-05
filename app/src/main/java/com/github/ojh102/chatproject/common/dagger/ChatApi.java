@@ -26,7 +26,6 @@ public class ChatApi {
 
     private ChatApi.Api api;
 
-    @Inject
     public ChatApi(Retrofit retrofit) {
         api = retrofit.create(Api.class);
     }

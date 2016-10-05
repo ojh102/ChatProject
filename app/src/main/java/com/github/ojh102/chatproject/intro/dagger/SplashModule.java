@@ -1,7 +1,6 @@
 package com.github.ojh102.chatproject.intro.dagger;
 
-import com.github.ojh102.chatproject.common.dagger.MyScope;
-import com.github.ojh102.chatproject.common.dagger.NetworkModule;
+import com.github.ojh102.chatproject.common.dagger.PerActivity;
 
 import dagger.Module;
 import dagger.Provides;
@@ -19,13 +18,13 @@ public class SplashModule {
     }
 
     @Provides
-    @MyScope
+    @PerActivity
     public SplashPresenter provideSplashPresenter(SplashPresenterImpl splashPresenter) {
         return splashPresenter;
     }
 
     @Provides
-    @MyScope
+    @PerActivity
     public SplashPresenter.View provideView() {
         return view;
     }
