@@ -1,4 +1,4 @@
-package com.github.ojh102.chatproject.intro;
+package com.github.ojh102.chatproject.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,10 +6,11 @@ import android.widget.Toast;
 
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.common.BaseActivity;
-import com.github.ojh102.chatproject.common.dagger.NetworkComponent;
-import com.github.ojh102.chatproject.intro.dagger.DaggerSplashComponent;
-import com.github.ojh102.chatproject.intro.dagger.SplashModule;
-import com.github.ojh102.chatproject.intro.dagger.SplashPresenter;
+import com.github.ojh102.chatproject.common.di.NetworkComponent;
+import com.github.ojh102.chatproject.intro.IntroActivity;
+import com.github.ojh102.chatproject.splash.di.DaggerSplashComponent;
+import com.github.ojh102.chatproject.splash.di.SplashModule;
+import com.github.ojh102.chatproject.splash.di.SplashPresenter;
 import com.github.ojh102.chatproject.main.MainActivity;
 import com.github.ojh102.chatproject.util.PropertyManager;
 
@@ -19,6 +20,7 @@ public class SplashActivity extends BaseActivity implements SplashPresenter.View
 
     @Inject
     SplashPresenter splashPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.intro.IntroActivity;
-import com.github.ojh102.chatproject.intro.SignInFragment;
 import com.github.ojh102.chatproject.util.PropertyManager;
 
 import butterknife.BindView;

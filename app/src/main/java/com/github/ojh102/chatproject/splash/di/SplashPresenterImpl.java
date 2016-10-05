@@ -1,10 +1,9 @@
-package com.github.ojh102.chatproject.intro.dagger;
+package com.github.ojh102.chatproject.splash.di;
 
 import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
 
-import com.github.ojh102.chatproject.common.dagger.ChatApi;
+import com.github.ojh102.chatproject.common.di.ChatApi;
 import com.github.ojh102.chatproject.data.ServerResponse;
 import com.google.firebase.iid.FirebaseInstanceId;
 
@@ -21,12 +20,12 @@ import retrofit2.Response;
 
 public class SplashPresenterImpl implements SplashPresenter {
 
-    private View view;
+    private SplashPresenter.View view;
     private Handler handler;
     private ChatApi chatApi;
 
     @Inject
-    public SplashPresenterImpl(View view, @Named("main_thread")Handler handler, ChatApi chatApi) {
+    public SplashPresenterImpl(SplashPresenter.View view, @Named("main_thread") Handler handler, ChatApi chatApi) {
         this.view = view;
         this.handler = handler;
         this.chatApi = chatApi;
@@ -42,7 +41,7 @@ public class SplashPresenterImpl implements SplashPresenter {
                     public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                         view.showToast(response.body().getMessage());
 
-                        if(response.body().getSuccess() == 1) {
+                        if (response.body().getSuccess() == 1) {
                             view.navigateToMain();
                         } else {
                             view.navigateToIntro();

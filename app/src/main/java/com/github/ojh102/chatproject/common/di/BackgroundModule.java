@@ -1,4 +1,4 @@
-package com.github.ojh102.chatproject.common.dagger;
+package com.github.ojh102.chatproject.common.di;
 
 import android.os.Handler;
 import android.os.Looper;

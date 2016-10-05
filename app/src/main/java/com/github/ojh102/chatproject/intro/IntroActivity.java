@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.github.ojh102.chatproject.R;
+import com.github.ojh102.chatproject.intro.signin.SignInFragment;
 import com.github.ojh102.chatproject.util.BackPressCloseHandler;
 
 public class IntroActivity extends AppCompatActivity {

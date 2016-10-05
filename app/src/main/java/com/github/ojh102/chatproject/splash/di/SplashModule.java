@@ -1,6 +1,6 @@
-package com.github.ojh102.chatproject.intro.dagger;
+package com.github.ojh102.chatproject.splash.di;
 
-import com.github.ojh102.chatproject.common.dagger.PerActivity;
+import com.github.ojh102.chatproject.common.di.PerActivity;
 
 import dagger.Module;
 import dagger.Provides;

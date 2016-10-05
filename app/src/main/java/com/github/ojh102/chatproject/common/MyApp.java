@@ -3,11 +3,11 @@ package com.github.ojh102.chatproject.common;
 import android.app.Application;
 import android.content.Context;
 
-import com.github.ojh102.chatproject.common.dagger.AppModule;
-import com.github.ojh102.chatproject.common.dagger.BackgroundModule;
-import com.github.ojh102.chatproject.common.dagger.DaggerNetworkComponent;
-import com.github.ojh102.chatproject.common.dagger.NetworkComponent;
-import com.github.ojh102.chatproject.common.dagger.NetworkModule;
+import com.github.ojh102.chatproject.common.di.AppModule;
+import com.github.ojh102.chatproject.common.di.BackgroundModule;
+import com.github.ojh102.chatproject.common.di.DaggerNetworkComponent;
+import com.github.ojh102.chatproject.common.di.NetworkComponent;
+import com.github.ojh102.chatproject.common.di.NetworkModule;
 
 /**
  * Created by OhJaeHwan on 2016-09-23.

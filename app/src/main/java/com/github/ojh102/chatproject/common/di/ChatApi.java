@@ -1,4 +1,4 @@
-package com.github.ojh102.chatproject.common.dagger;
+package com.github.ojh102.chatproject.common.di;
 
 import com.github.ojh102.chatproject.data.MessageResponse;
 import com.github.ojh102.chatproject.data.MessageRoom;
@@ -6,8 +6,6 @@ import com.github.ojh102.chatproject.data.ServerResponse;
 import com.github.ojh102.chatproject.data.User;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;

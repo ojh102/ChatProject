@@ -1,4 +1,4 @@
-package com.github.ojh102.chatproject.common.dagger;
+package com.github.ojh102.chatproject.common.di;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -8,11 +8,11 @@ import javax.inject.Scope;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * Activity Scope
+ * Fragment Scope
  */
 @Scope
 @Documented
 @Retention(RUNTIME)
-public @interface PerActivity
+public @interface PerFragment
 {
 }

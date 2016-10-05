@@ -1,8 +1,8 @@
-package com.github.ojh102.chatproject.intro.dagger;
+package com.github.ojh102.chatproject.splash.di;
 
-import com.github.ojh102.chatproject.common.dagger.PerActivity;
-import com.github.ojh102.chatproject.common.dagger.NetworkComponent;
-import com.github.ojh102.chatproject.intro.SplashActivity;
+import com.github.ojh102.chatproject.common.di.PerActivity;
+import com.github.ojh102.chatproject.common.di.NetworkComponent;
+import com.github.ojh102.chatproject.splash.SplashActivity;
 
 import dagger.Component;
 

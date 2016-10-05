@@ -1,8 +1,7 @@
-package com.github.ojh102.chatproject.common.dagger;
+package com.github.ojh102.chatproject.common.di;
 
 import android.app.Application;
 import android.os.Handler;
-import android.os.Looper;
 
 import javax.inject.Named;
 import javax.inject.Singleton;

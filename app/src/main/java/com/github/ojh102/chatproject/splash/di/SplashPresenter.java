@@ -1,4 +1,4 @@
-package com.github.ojh102.chatproject.intro.dagger;
+package com.github.ojh102.chatproject.splash.di;
 
 /**
  * Created by OhJaeHwan on 2016-09-29.
