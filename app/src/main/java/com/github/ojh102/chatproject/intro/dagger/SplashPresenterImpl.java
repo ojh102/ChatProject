@@ -54,6 +54,8 @@ public class SplashPresenterImpl implements SplashPresenter {
                         view.navigateToIntro();
                     }
                 });
+            } else {
+                view.navigateToIntro();
             }
         }, 2000);
 
