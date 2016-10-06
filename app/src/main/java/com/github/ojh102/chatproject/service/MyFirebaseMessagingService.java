@@ -25,7 +25,7 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.data.MessageData;
+import com.github.ojh102.chatproject.model.MessageData;
 import com.github.ojh102.chatproject.splash.SplashActivity;
 import com.github.ojh102.chatproject.util.PropertyManager;
 import com.google.firebase.messaging.FirebaseMessagingService;

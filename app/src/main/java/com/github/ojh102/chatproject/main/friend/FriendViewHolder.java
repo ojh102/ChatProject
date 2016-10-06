@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.github.ojh102.chatproject.common.MyApp;
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.data.User;
+import com.github.ojh102.chatproject.model.User;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

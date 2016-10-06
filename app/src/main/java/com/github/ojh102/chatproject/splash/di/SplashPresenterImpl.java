@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 
 import com.github.ojh102.chatproject.common.di.ChatApi;
-import com.github.ojh102.chatproject.data.ServerResponse;
+import com.github.ojh102.chatproject.model.ServerResponse;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import javax.inject.Inject;

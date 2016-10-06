@@ -1,4 +1,4 @@
-package com.github.ojh102.chatproject.main.friend;
+package com.github.ojh102.chatproject.main.friend.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.data.User;
+import com.github.ojh102.chatproject.main.friend.FriendViewHolder;
+import com.github.ojh102.chatproject.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  * Created by OhJaeHwan on 2016-09-24.
  */
 
-public class FriendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class FriendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements FriendAdapterDataModel, FriendAdapterDataView{
 
     List<User> items = new ArrayList<>();
 
@@ -43,26 +44,16 @@ public class FriendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return items.size();
     }
 
-    public void add(List<User> users) {
+    @Override
+    public void setList(List<User> users) {
         items = users;
+    }
+
+    @Override
+    public void refreshView() {
         notifyDataSetChanged();
     }
 
-    public void clear() {
-        items.clear();
-        notifyDataSetChanged();
-    }
-
-
-    public void getDummyData() {
-        for(int i=0; i<10; i++) {
-            User item = new User();
-            item.setId("test"+i);
-            item.setThumbnail("http://pncg.co.kr/upload/menu/11364366473.png");
-            items.add(item);
-        }
-        notifyDataSetChanged();
-    }
 
     public interface OnClickFriendAdapterListener {
         public void onClickFriendView(User user);

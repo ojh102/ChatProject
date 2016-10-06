@@ -13,9 +13,9 @@ import android.widget.Toast;
 
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.common.MessageApi;
-import com.github.ojh102.chatproject.data.ServerResponse;
-import com.github.ojh102.chatproject.data.User;
-import com.github.ojh102.chatproject.main.friend.FriendAdapter;
+import com.github.ojh102.chatproject.model.ServerResponse;
+import com.github.ojh102.chatproject.model.User;
+import com.github.ojh102.chatproject.main.friend.adapter.FriendAdapter;
 import com.github.ojh102.chatproject.util.DividerItemDecoration;
 import com.github.ojh102.chatproject.util.NetworkManager;
 import com.github.ojh102.chatproject.util.PropertyManager;
@@ -106,7 +106,7 @@ public class MessageRoomAddActivity extends AppCompatActivity {
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null)
-                        mFriendAdapter.add(response.body());
+                        mFriendAdapter.setList(response.body());
                 } else {
                     Toast.makeText(getContext(), "network fail", Toast.LENGTH_SHORT).show();
                 }

@@ -6,8 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.ojh102.chatproject.R;
-import com.github.ojh102.chatproject.data.MessageRoom;
-import com.github.ojh102.chatproject.data.User;
+import com.github.ojh102.chatproject.model.MessageRoom;
 
 import java.util.ArrayList;
 import java.util.List;

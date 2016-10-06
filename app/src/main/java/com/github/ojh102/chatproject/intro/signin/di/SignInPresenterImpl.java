@@ -3,7 +3,7 @@ package com.github.ojh102.chatproject.intro.signin.di;
 import android.text.TextUtils;
 
 import com.github.ojh102.chatproject.common.di.ChatApi;
-import com.github.ojh102.chatproject.data.ServerResponse;
+import com.github.ojh102.chatproject.model.ServerResponse;
 import com.github.ojh102.chatproject.util.PropertyManager;
 
 import javax.inject.Inject;

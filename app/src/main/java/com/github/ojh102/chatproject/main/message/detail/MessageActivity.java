@@ -18,9 +18,9 @@ import android.widget.Toast;
 
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.common.MessageApi;
-import com.github.ojh102.chatproject.data.MessageData;
-import com.github.ojh102.chatproject.data.MessageResponse;
-import com.github.ojh102.chatproject.data.ServerResponse;
+import com.github.ojh102.chatproject.model.MessageData;
+import com.github.ojh102.chatproject.model.MessageResponse;
+import com.github.ojh102.chatproject.model.ServerResponse;
 import com.github.ojh102.chatproject.util.NetworkManager;
 import com.github.ojh102.chatproject.util.PropertyManager;
 
@@ -147,7 +147,7 @@ public class MessageActivity extends AppCompatActivity {
             getData();
 //            MessageData data = (MessageData) intent.getSerializableExtra(MessageData.KEY_MESSAGE_RESPONSE);
 //            if (cAdapter != null && recyclerView != null) {
-//                cAdapter.add(data);
+//                cAdapter.setList(data);
 //            recyclerView.scrollToPosition(cAdapter.items.size() - 1);
 //            }
 

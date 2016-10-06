@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         Fragment fragment = mAdapter.getFragmentInfo(mViewPager.getCurrentItem()).getFragment();
         if(fragment != null) {
-            if(fragment instanceof FriendFragment) {
+            if(fragment instanceof FriendFragment && ((FriendFragment) fragment).friendPresenter != null) {
                 ((FriendFragment) fragment).getData();
             } else if(fragment instanceof MessageRoomFragment) {
                 ((MessageRoomFragment)fragment).getData();

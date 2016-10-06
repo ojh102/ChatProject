@@ -1,4 +1,4 @@
-package com.github.ojh102.chatproject.data;
+package com.github.ojh102.chatproject.model;
 
 import java.util.List;
 

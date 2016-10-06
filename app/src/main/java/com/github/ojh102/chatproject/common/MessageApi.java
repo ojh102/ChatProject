@@ -1,9 +1,9 @@
 package com.github.ojh102.chatproject.common;
 
-import com.github.ojh102.chatproject.data.MessageResponse;
-import com.github.ojh102.chatproject.data.MessageRoom;
-import com.github.ojh102.chatproject.data.ServerResponse;
-import com.github.ojh102.chatproject.data.User;
+import com.github.ojh102.chatproject.model.MessageResponse;
+import com.github.ojh102.chatproject.model.MessageRoom;
+import com.github.ojh102.chatproject.model.ServerResponse;
+import com.github.ojh102.chatproject.model.User;
 
 import java.util.List;
 

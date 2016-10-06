@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.github.ojh102.chatproject.R;
 import com.github.ojh102.chatproject.common.MessageApi;
-import com.github.ojh102.chatproject.data.MessageRoom;
+import com.github.ojh102.chatproject.model.MessageRoom;
 import com.github.ojh102.chatproject.main.message.detail.MessageActivity;
 import com.github.ojh102.chatproject.util.DividerItemDecoration;
 import com.github.ojh102.chatproject.util.NetworkManager;

@@ -1,4 +1,4 @@
-package com.github.ojh102.chatproject.data;
+package com.github.ojh102.chatproject.model;
 
 /**
  * Created by OhJaeHwan on 2016-09-23.
